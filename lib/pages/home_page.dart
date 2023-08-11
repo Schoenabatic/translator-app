@@ -35,7 +35,9 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(18),
                     boxShadow: neumorphism_effect,
                   ),
-                  child: const Center(child: Icon(Icons.home)),
+                  child: const Center(
+                    child: Icon(Icons.home),
+                  ),
                 ),
               ),
               SizedBox(
@@ -50,7 +52,9 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(18),
                     boxShadow: neumorphism_effect,
                   ),
-                  child: const Center(child: Icon(Icons.mic)),
+                  child: const Center(
+                    child: Icon(Icons.mic),
+                  ),
                 ),
               ),
               SizedBox(
@@ -65,7 +69,9 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(18),
                     boxShadow: neumorphism_effect,
                   ),
-                  child: const Center(child: Icon(Icons.settings)),
+                  child: const Center(
+                    child: Icon(Icons.settings),
+                  ),
                 ),
               ),
             ],
@@ -88,22 +94,34 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   const SizedBox(height: 5),
                   GestureDetector(
-                    onTap: () => setState(() => isElevated = !isElevated),
+                    onTap: () => setState(
+                      () => isElevated = !isElevated,
+                    ),
                     child: AnimatedContainer(
                       duration: const Duration(milliseconds: 200),
                       height: MediaQuery.of(context).size.height * 0.04,
-                      width: MediaQuery.of(context).size.width * 0.25,
+                      width: MediaQuery.of(context).size.width * 0.3,
                       decoration: BoxDecoration(
                         color: Colors.grey[300],
                         borderRadius: BorderRadius.circular(18),
                         boxShadow: isElevated ? neumorphism_effect : null,
                       ),
                       child: Center(
-                          child: DropdownButton(
-                        value: 'English',
-                        items: [],
-                        onChanged: (value) {},
-                      )),
+                        child: DropdownButton(
+                          value: 1,
+                          items: [
+                            DropdownMenuItem(
+                              child: Text('English'),
+                              value: 1,
+                            ),
+                            DropdownMenuItem(
+                              child: Text('Japanese'),
+                              value: 2,
+                            ),
+                          ],
+                          onChanged: (value) {},
+                        ),
+                      ),
                     ),
                   ),
                   const Padding(
@@ -116,12 +134,14 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.2,
                     width: MediaQuery.of(context).size.width * 0.65,
-                    child: TextField(
+                    child: const TextField(
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
                       textAlignVertical: TextAlignVertical.top,
                       textAlign: TextAlign.center,
-                      decoration: InputDecoration.collapsed(hintText: 'Enter text you want to translate'),
+                      decoration: InputDecoration.collapsed(
+                        hintText: 'Enter text you want to translate',
+                      ),
                     ),
                   ),
                 ],
@@ -140,11 +160,13 @@ class _HomePageState extends State<HomePage> {
                     child: Container(
                       height: MediaQuery.of(context).size.height * 0.04,
                       width: MediaQuery.of(context).size.width * 0.25,
-                      child: Center(child: Text('Japanese')),
                       decoration: BoxDecoration(
                           color: Colors.grey[300],
                           borderRadius: BorderRadius.circular(18),
                           boxShadow: neumorphism_effect),
+                      child: const Center(
+                        child: Text('Japanese'),
+                      ),
                     ),
                   ),
                   const Padding(
