@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:translator_app/constants/neumorphism_effect.dart';
 import 'package:translator_app/pages/settings_page.dart';
 import 'package:translator_app/pages/translator_page.dart';

@@ -1,5 +1,3 @@
-import 'dart:js_interop';
-
 import 'package:flutter/material.dart';
 import 'package:translator/translator.dart';
 import 'package:translator_app/constants/neumorphism_effect.dart';
@@ -108,7 +106,7 @@ class _TranslatorPageState extends State<TranslatorPage> {
                     width: MediaQuery.of(context).size.width * 0.65,
                     child: TextField(
                       onChanged: (text) async {
-                        if (text.isNotEmpty & text.isUndefinedOrNull == false) {
+                        if (text.isNotEmpty) {
                           final translation = await text.translate(
                             from: 'en',
                             to: 'es',
@@ -119,13 +117,7 @@ class _TranslatorPageState extends State<TranslatorPage> {
                               translatedText = translation.text;
                             },
                           );
-                        } else {
-                          setState(
-                            () {
-                              translatedText = 'hell';
-                            },
-                          );
-                        }
+                        } else {}
                       },
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
