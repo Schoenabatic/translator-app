@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: PageView(
-        children: [
+        children: const [
           TranslatorPage(),
           SettingsPage(),
         ],

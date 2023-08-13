@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:translator/translator.dart';
+import 'package:translator_app/constants/dropdown_list.dart';
 import 'package:translator_app/constants/neumorphism_effect.dart';
 
 class TranslatorPage extends StatefulWidget {
@@ -11,7 +12,8 @@ class TranslatorPage extends StatefulWidget {
 
 class _TranslatorPageState extends State<TranslatorPage> {
   bool isElevated = true;
-  int selectedLanguage = 1;
+  String selectedLanguage = 'auto';
+  String translationLanguage = 'ja';
   int lastSelectedLanguage = 2;
   String translatedText = '';
   @override
@@ -64,31 +66,29 @@ class _TranslatorPageState extends State<TranslatorPage> {
                     child: AnimatedContainer(
                       duration: const Duration(milliseconds: 200),
                       height: MediaQuery.of(context).size.height * 0.04,
-                      width: MediaQuery.of(context).size.width * 0.3,
+                      width: MediaQuery.of(context).size.width * 0.30,
                       decoration: BoxDecoration(
                         color: Colors.grey[300],
                         borderRadius: BorderRadius.circular(18),
                         boxShadow: isElevated ? neumorphism_effect : null,
                       ),
                       child: Center(
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton(
-                            value: selectedLanguage,
-                            items: const [
-                              DropdownMenuItem(
-                                value: 1,
-                                child: Text('English'),
-                              ),
-                              DropdownMenuItem(
-                                value: 2,
-                                child: Text('Japanese'),
-                              ),
-                            ],
-                            onChanged: (value) {
-                              setState(() {
-                                selectedLanguage = value!;
-                              });
-                            },
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 12),
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton(
+                              isExpanded: true,
+                              value: selectedLanguage,
+                              items: dropdownList,
+                              onChanged: (value) {
+                                setState(
+                                  () {
+                                    selectedLanguage = value;
+                                    print(selectedLanguage);
+                                  },
+                                );
+                              },
+                            ),
                           ),
                         ),
                       ),
@@ -108,8 +108,8 @@ class _TranslatorPageState extends State<TranslatorPage> {
                       onChanged: (text) async {
                         if (text.isNotEmpty) {
                           final translation = await text.translate(
-                            from: 'en',
-                            to: 'es',
+                            from: selectedLanguage,
+                            to: translationLanguage,
                           );
 
                           setState(
@@ -146,13 +146,29 @@ class _TranslatorPageState extends State<TranslatorPage> {
                   GestureDetector(
                     child: Container(
                       height: MediaQuery.of(context).size.height * 0.04,
-                      width: MediaQuery.of(context).size.width * 0.25,
+                      width: MediaQuery.of(context).size.width * 0.3,
                       decoration: BoxDecoration(
                           color: Colors.grey[300],
                           borderRadius: BorderRadius.circular(18),
                           boxShadow: neumorphism_effect),
-                      child: const Center(
-                        child: Text('Japanese'),
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 12),
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton(
+                              isExpanded: true,
+                              value: translationLanguage,
+                              items: dropdownList,
+                              onChanged: (value) {
+                                setState(
+                                  () {
+                                    translationLanguage = value!;
+                                  },
+                                );
+                              },
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
