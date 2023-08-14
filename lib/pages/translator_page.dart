@@ -77,6 +77,7 @@ class _TranslatorPageState extends State<TranslatorPage> {
                           padding: const EdgeInsets.only(left: 12),
                           child: DropdownButtonHideUnderline(
                             child: DropdownButton(
+                              borderRadius: BorderRadius.circular(18),
                               isExpanded: true,
                               value: selectedLanguage,
                               items: dropdownList,
@@ -156,6 +157,7 @@ class _TranslatorPageState extends State<TranslatorPage> {
                           padding: const EdgeInsets.only(left: 12),
                           child: DropdownButtonHideUnderline(
                             child: DropdownButton(
+                              borderRadius: BorderRadius.circular(18),
                               isExpanded: true,
                               value: translationLanguage,
                               items: dropdownList,
