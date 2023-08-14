@@ -11,6 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  PageController? controller;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,6 +28,11 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               GestureDetector(
+                onTap: () {
+                  setState(() {
+                    PageController(initialPage: 0);
+                  });
+                },
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.05,
                   width: MediaQuery.of(context).size.width * 0.15,
@@ -44,6 +50,7 @@ class _HomePageState extends State<HomePage> {
                 width: MediaQuery.of(context).size.width * 0.2,
               ),
               GestureDetector(
+                onTap: () {},
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.08,
                   width: MediaQuery.of(context).size.width * 0.15,
@@ -79,6 +86,8 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: PageView(
+        controller: controller,
+        physics: NeverScrollableScrollPhysics(),
         children: const [
           TranslatorPage(),
           SettingsPage(),
