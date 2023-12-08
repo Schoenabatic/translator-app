@@ -1,6 +1,6 @@
 # translator_app
 
-translator app made with neumorphism design using google translator api
+translator app made in flutter with neumorphism design using google translator api
 
 
 
